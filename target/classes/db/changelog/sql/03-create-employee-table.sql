@@ -6,6 +6,11 @@
 
 CREATE TABLE IF NOT EXISTS employee (
     id BIGINT(20),
+    external_id VARCHAR(32),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP,
+
     person_id BIGINT(20),
     PRIMARY KEY (id),
     FOREIGN KEY (person_id) REFERENCES person(id)

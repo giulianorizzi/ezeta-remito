@@ -6,6 +6,11 @@
 
 CREATE TABLE IF NOT EXISTS remito_detail (
     id BIGINT(20),
+    external_id VARCHAR(32),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP,
+
     quantity INT DEFAULT 0,
     remito_id BIGINT(20),
     employee_id BIGINT(20),

@@ -6,12 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class RemitoDetail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class RemitoDetail extends BasicEntity {
     @ManyToOne
     @JoinColumn(name = "remito_id")
     private Remito remito;

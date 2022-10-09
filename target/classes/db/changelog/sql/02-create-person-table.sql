@@ -6,6 +6,11 @@
 
 CREATE TABLE IF NOT EXISTS person (
     id BIGINT(20),
+    external_id VARCHAR(32),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP,
+
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     birth_date DATE,

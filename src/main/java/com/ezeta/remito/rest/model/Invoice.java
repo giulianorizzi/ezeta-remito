@@ -7,11 +7,6 @@ import java.util.List;
 
 @Entity
 @Data
-public class Invoice {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class Invoice extends BasicEntity {
     private double total;
 }

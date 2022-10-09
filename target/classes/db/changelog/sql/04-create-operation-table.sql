@@ -6,6 +6,11 @@
 
 CREATE TABLE IF NOT EXISTS operation (
     id BIGINT(20),
+    external_id VARCHAR(32),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP,
+
     name VARCHAR(100),
     price DOUBLE DEFAULT 0,
     PRIMARY KEY (id)
