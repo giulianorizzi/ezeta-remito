@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RemitoDetailDTO {
+public class RemitoDetailCreationDTO {
     private String operationExternalId;
     private String employeeExternalId;
     private int quantity;

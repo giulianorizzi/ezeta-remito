@@ -13,5 +13,5 @@ import java.util.List;
 @AllArgsConstructor
 public class RemitoCreationDTO {
     private String number;
-    private List<RemitoDetailDTO> details;
+    private List<RemitoDetailCreationDTO> details;
 }
