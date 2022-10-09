@@ -2,6 +2,7 @@ package com.ezeta.remito.rest.service;
 
 import com.ezeta.remito.rest.dto.RemitoDTO;
 import com.ezeta.remito.rest.dto.creation.RemitoCreationDTO;
+import com.ezeta.remito.rest.dto.creation.RemitoDetailCreationDTO;
 import com.ezeta.remito.rest.enums.Discriminator;
 import com.ezeta.remito.rest.exception.NotFoundException;
 import com.ezeta.remito.rest.model.Employee;
@@ -12,6 +13,10 @@ import com.ezeta.remito.rest.repository.RemitoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class RemitoService {
@@ -30,19 +35,23 @@ public class RemitoService {
 
     @Transactional
     public void create(RemitoCreationDTO dto) {
-        Employee employee = this.employeeService.getByExternalId("jNfeTTRTQihhuq2a15KHcH5lVuNbkbtE");
-        Operation operation = this.operationService.getByExternalId("4aW45ptF1LDu4qJOE46aqZqgJX5YbTbr");
+        List<String> employeeExternalIds = dto.getDetails().stream().map(RemitoDetailCreationDTO::getEmployeeExternalId).collect(Collectors.toList());
+        List<String> operationsExternalIds = dto.getDetails().stream().map(RemitoDetailCreationDTO::getOperationExternalId).collect(Collectors.toList());
+        Map<String, Employee> employeeMap = this.employeeService.getEmployeeMap(employeeExternalIds);
+        Map<String, Operation> operationMap = this.operationService.getOperationMap(operationsExternalIds);
 
         Remito remito = new Remito();
 
-        remito.setNumber("32452");
+        remito.setNumber(dto.getNumber());
 
         dto.getDetails().forEach(detail -> {
-            RemitoDetail remitoDetail = new RemitoDetail();
-
-            remitoDetail.setEmployee(employee);
-            remitoDetail.setOperation(operation);
-            remitoDetail.setQuantity(detail.getQuantity());
+            RemitoDetail remitoDetail = RemitoDetail
+                    .builder()
+                    .remito(remito)
+                    .operation(operationMap.get(detail.getOperationExternalId()))
+                    .employee(employeeMap.get(detail.getEmployeeExternalId()))
+                    .quantity(detail.getQuantity())
+                    .build();
 
             remito.addDetail(remitoDetail);
         });

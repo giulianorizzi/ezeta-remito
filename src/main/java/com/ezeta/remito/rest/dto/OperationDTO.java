@@ -1,4 +1,4 @@
-package com.ezeta.remito.rest.dto.creation;
+package com.ezeta.remito.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OperationDTO {
+    private String externalId;
     private String name;
     private double price;
 }

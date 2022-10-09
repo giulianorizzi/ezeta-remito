@@ -11,7 +11,7 @@ import java.util.List;
 public class Remito extends BasicEntity {
     private String number;
 
-    @OneToMany(mappedBy = "remito")
+    @OneToMany(mappedBy = "remito", cascade = CascadeType.ALL)
     private List<RemitoDetail> details = new ArrayList<>();
 
     public void addDetail(RemitoDetail detail) {

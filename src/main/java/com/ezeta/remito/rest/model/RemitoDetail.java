@@ -1,11 +1,15 @@
 package com.ezeta.remito.rest.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
 public class RemitoDetail extends BasicEntity {
     @ManyToOne
     @JoinColumn(name = "remito_id")
@@ -20,4 +24,11 @@ public class RemitoDetail extends BasicEntity {
     private Employee employee;
 
     private int quantity;
+
+    public RemitoDetail(Remito remito, Operation operation, Employee employee, int quantity) {
+        this.remito = remito;
+        this.operation = operation;
+        this.employee = employee;
+        this.quantity = quantity;
+    }
 }
