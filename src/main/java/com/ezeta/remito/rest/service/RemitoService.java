@@ -34,7 +34,7 @@ public class RemitoService {
     }
 
     @Transactional
-    public void create(RemitoCreationDTO dto) {
+    public RemitoDTO create(RemitoCreationDTO dto) {
         List<String> employeeExternalIds = dto.getDetails().stream().map(RemitoDetailCreationDTO::getEmployeeExternalId).collect(Collectors.toList());
         List<String> operationsExternalIds = dto.getDetails().stream().map(RemitoDetailCreationDTO::getOperationExternalId).collect(Collectors.toList());
         Map<String, Employee> employeeMap = this.employeeService.getEmployeeMap(employeeExternalIds);
@@ -57,6 +57,8 @@ public class RemitoService {
         });
 
         this.repository.save(remito);
+
+        return this.modelMapper.map(remito, RemitoDTO.class);
     }
 
     @Transactional(readOnly = true)

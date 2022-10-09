@@ -16,9 +16,9 @@ public class RemitoController {
     }
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody RemitoCreationDTO dto) {
-        this.remitoService.create(dto);
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<RemitoDTO> create(@RequestBody RemitoCreationDTO dto) {
+        RemitoDTO response = this.remitoService.create(dto);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/external-id/{externalId}")
