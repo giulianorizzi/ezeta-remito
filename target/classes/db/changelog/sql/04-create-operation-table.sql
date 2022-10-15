@@ -12,6 +12,5 @@ CREATE TABLE IF NOT EXISTS operation (
     deleted_at TIMESTAMP,
 
     name VARCHAR(100),
-    price DOUBLE DEFAULT 0,
     PRIMARY KEY (id)
 )

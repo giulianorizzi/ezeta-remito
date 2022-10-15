@@ -19,18 +19,25 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class RemitoService {
-    private final RemitoRepository repository;
+public class RemitoService extends BasicService<Remito, RemitoDTO, RemitoRepository> {
     private final EmployeeService employeeService;
     private final OperationService operationService;
-    private final ModelMapper modelMapper;
 
     public RemitoService(RemitoRepository repository, EmployeeService employeeService,
                          OperationService operationService, ModelMapper modelMapper) {
-        this.repository = repository;
+        super(repository, modelMapper);
         this.employeeService = employeeService;
         this.operationService = operationService;
-        this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public Class<Remito> getModelClass() {
+        return Remito.class;
+    }
+
+    @Override
+    public Class<RemitoDTO> getDTOClass() {
+        return RemitoDTO.class;
     }
 
     @Transactional
@@ -58,19 +65,6 @@ public class RemitoService {
 
         this.repository.save(remito);
 
-        return this.modelMapper.map(remito, RemitoDTO.class);
-    }
-
-    @Transactional(readOnly = true)
-    public Remito getByExternalId(String externalId) {
-        return this.repository
-                .findByExternalId(externalId)
-                .orElseThrow(() -> new NotFoundException(Remito.class, Discriminator.EXTERNAL_ID, externalId));
-    }
-
-    @Transactional(readOnly = true)
-    public RemitoDTO getDTOByExternalId(String externalId) {
-        Remito remito = this.getByExternalId(externalId);
         return this.modelMapper.map(remito, RemitoDTO.class);
     }
 }

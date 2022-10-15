@@ -5,15 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OperationDTO {
-    private String externalId;
-    private String name;
-    private List<OperationPriceDTO> prices = new ArrayList<>();
+public class OperationPriceDTO {
+    private double price;
+    private double untilDiameter;
 }
