@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Data
 public class Employee extends BasicEntity {
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private Person person;
 }

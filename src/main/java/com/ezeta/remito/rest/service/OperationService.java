@@ -31,7 +31,7 @@ public class OperationService extends BasicService<Operation, OperationDTO, Oper
     @Transactional(readOnly = true)
     public Map<String, Operation> getOperationMap(List<String> externalIds) {
         Map<String, Operation> operationMap = new HashMap<>();
-        List<Operation> operations = this.repository.getByExternalIdIn(externalIds);
+        List<Operation> operations = this.getByExternalIdIn(externalIds);
 
         operations.forEach(operation -> operationMap.put(operation.getExternalId(), operation));
 

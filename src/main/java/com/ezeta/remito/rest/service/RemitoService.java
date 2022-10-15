@@ -3,8 +3,6 @@ package com.ezeta.remito.rest.service;
 import com.ezeta.remito.rest.dto.RemitoDTO;
 import com.ezeta.remito.rest.dto.creation.RemitoCreationDTO;
 import com.ezeta.remito.rest.dto.creation.RemitoDetailCreationDTO;
-import com.ezeta.remito.rest.enums.Discriminator;
-import com.ezeta.remito.rest.exception.NotFoundException;
 import com.ezeta.remito.rest.model.Employee;
 import com.ezeta.remito.rest.model.Operation;
 import com.ezeta.remito.rest.model.Remito;
@@ -63,8 +61,6 @@ public class RemitoService extends BasicService<Remito, RemitoDTO, RemitoReposit
             remito.addDetail(remitoDetail);
         });
 
-        this.repository.save(remito);
-
-        return this.modelMapper.map(remito, RemitoDTO.class);
+        return this.mapToDTO(this.save(remito));
     }
 }

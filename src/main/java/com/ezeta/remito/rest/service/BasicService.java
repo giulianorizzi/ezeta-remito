@@ -25,6 +25,11 @@ public abstract class BasicService<M extends BasicEntity, D, R extends BasicRepo
 
     public abstract Class<D> getDTOClass();
 
+    @Transactional
+    public M save(M model) {
+        return this.repository.save(model);
+    }
+
     @Transactional(readOnly = true)
     public M getByExternalId(String externalId) {
         return this
@@ -46,6 +51,11 @@ public abstract class BasicService<M extends BasicEntity, D, R extends BasicRepo
     @Transactional(readOnly = true)
     public List<D> getAllDTO() {
         return this.mapToDTOList(this.repository.findAll());
+    }
+
+    @Transactional(readOnly = true)
+    public List<M> getByExternalIdIn(List<String> externalIds) {
+        return this.repository.getByExternalIdIn(externalIds);
     }
 
     // Map utils
