@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TaxDTO {
+public class InvoiceDTO {
     private double total;
     private List<RemitoDTO> remitos = new ArrayList<>();
 }

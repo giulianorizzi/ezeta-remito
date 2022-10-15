@@ -1,5 +1,5 @@
 -- liquibase formatted sql
--- changeset liquibase:8
+-- changeset liquibase:7
 
 --preconditions onFail:HALT onError:HALT
 --precondition-sql-check expectedResult:1 SELECT COUNT(*) FROM information_schema.TABLES t WHERE t.TABLE_NAME = 'operation'

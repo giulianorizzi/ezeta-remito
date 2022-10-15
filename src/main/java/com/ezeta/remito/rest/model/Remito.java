@@ -15,8 +15,8 @@ public class Remito extends BasicEntity {
     private List<RemitoDetail> details = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "tax_id")
-    private Tax tax;
+    @JoinColumn(name = "invoice_id")
+    private Invoice invoice;
 
     public void addDetail(RemitoDetail detail) {
         this.details.add(detail);

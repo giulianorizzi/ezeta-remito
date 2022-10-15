@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TaxCreationDTO {
-    @Size(min = 1, message = "Min number of remitos to create a tax is 1")
+public class InvoiceCreationDTO {
+    @Size(min = 1, message = "Min number of remitos to create an invoice is 1")
     private List<String> remitosExternalIds = new ArrayList<>();
 }
