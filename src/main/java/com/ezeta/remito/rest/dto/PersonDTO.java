@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class PersonDTO {
+public class PersonDTO extends BasicDTO {
     private String externalId;
     private String firstName;
     private String lastName;

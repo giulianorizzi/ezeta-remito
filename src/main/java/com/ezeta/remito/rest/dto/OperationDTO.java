@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OperationDTO {
+public class OperationDTO extends BasicDTO {
     private String externalId;
     private String name;
     private List<OperationPriceDTO> prices = new ArrayList<>();

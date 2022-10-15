@@ -5,7 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EmployeeDTO extends BasicDTO {
+public abstract class BasicDTO {
     private String externalId;
-    private PersonDTO person;
 }

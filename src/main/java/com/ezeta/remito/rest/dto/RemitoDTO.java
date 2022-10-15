@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class RemitoDTO {
+public class RemitoDTO extends BasicDTO {
     private String externalId;
     private String number;
     private List<RemitoDetailDTO> details;

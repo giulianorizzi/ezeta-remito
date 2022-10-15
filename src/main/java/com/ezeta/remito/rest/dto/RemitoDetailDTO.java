@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RemitoDetailDTO {
+public class RemitoDetailDTO extends BasicDTO {
     private String externalId;
     private EmployeeDTO employee;
     private OperationDTO operation;

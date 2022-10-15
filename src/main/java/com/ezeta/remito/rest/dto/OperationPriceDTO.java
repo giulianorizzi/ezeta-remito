@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OperationPriceDTO {
+public class OperationPriceDTO extends BasicDTO {
     private double price;
     private double untilDiameter;
 }
