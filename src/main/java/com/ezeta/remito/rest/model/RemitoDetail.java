@@ -25,10 +25,13 @@ public class RemitoDetail extends BasicEntity {
 
     private int quantity;
 
-    public RemitoDetail(Remito remito, Operation operation, Employee employee, int quantity) {
+    private double diameter;
+
+    public RemitoDetail(Remito remito, Operation operation, Employee employee, int quantity, double diameter) {
         this.remito = remito;
         this.operation = operation;
         this.employee = employee;
         this.quantity = quantity;
+        this.diameter = diameter;
     }
 }

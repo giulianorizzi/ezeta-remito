@@ -10,4 +10,5 @@ public class RemitoDetailDTO extends BasicDTO {
     private EmployeeDTO employee;
     private OperationDTO operation;
     private int quantity;
+    private double diameter;
 }

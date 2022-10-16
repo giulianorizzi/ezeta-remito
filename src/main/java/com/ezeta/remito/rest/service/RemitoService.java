@@ -56,6 +56,7 @@ public class RemitoService extends BasicService<Remito, RemitoDTO, RemitoReposit
                     .operation(operationMap.get(detail.getOperationExternalId()))
                     .employee(employeeMap.get(detail.getEmployeeExternalId()))
                     .quantity(detail.getQuantity())
+                    .diameter(detail.getDiameter())
                     .build();
 
             remito.addDetail(remitoDetail);
